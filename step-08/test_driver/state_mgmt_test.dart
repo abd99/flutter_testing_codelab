@@ -31,13 +31,11 @@ void main() {
 
     test('Verifying add method', () async {
       await driver.requestData('ADD');
-
       await driver.waitFor(find.text('Item 30'));
     });
 
     test('Verifying remove method', () async {
       await driver.requestData('REMOVE');
-
       await driver.waitForAbsent(find.text('Item 30'));
     });
   });

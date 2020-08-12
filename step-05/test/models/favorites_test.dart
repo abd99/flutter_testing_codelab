@@ -23,18 +23,14 @@ void main() {
     test('A new item should be added', () {
       var number = Random().nextInt(50);
       favorites.add(number);
-
       expect(favorites.items.contains(number), true);
     });
 
     test('An item should be removed', () {
       var number = Random().nextInt(50);
       favorites.add(number);
-
       expect(favorites.items.contains(number), true);
-
       favorites.remove(number);
-
       expect(favorites.items.contains(number), false);
     });
   });

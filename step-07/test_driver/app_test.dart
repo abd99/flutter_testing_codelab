@@ -34,14 +34,11 @@ void main() {
 
       final scrollingTimeline = await driver.traceAction(() async {
         await driver.scroll(listFinder, 0, -7000, Duration(seconds: 1));
-
         await driver.scroll(listFinder, 0, 7000, Duration(seconds: 1));
       });
 
       final scrollingSummary = TimelineSummary.summarize(scrollingTimeline);
-
       await scrollingSummary.writeSummaryToFile('scrolling', pretty: true);
-
       await scrollingSummary.writeTimelineToFile('scrolling', pretty: true);
     });
 
@@ -55,7 +52,6 @@ void main() {
 
         for (var icon in iconKeys) {
           await driver.tap(find.byValueKey(icon));
-
           await driver.waitFor(find.text('Added to favorites.'));
         }
 
@@ -69,16 +65,13 @@ void main() {
 
         for (final iconKey in removeIconKeys) {
           await driver.tap(find.byValueKey(iconKey));
-
           await driver.waitFor(find.text('Removed from favorites.'));
         }
       });
 
       final operationsSummary = TimelineSummary.summarize(operationsTimeline);
-
       await operationsSummary.writeSummaryToFile('favorites_operations',
           pretty: true);
-
       await operationsSummary.writeTimelineToFile('favorites_operations',
           pretty: true);
     });

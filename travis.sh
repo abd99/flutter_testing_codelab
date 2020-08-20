@@ -14,7 +14,7 @@ declare -a PROJECT_PATHS=($(find . -not -path './flutter/*' -not -path './Plugin
 
 for PROJECT in "${PROJECT_PATHS[@]}"; do
   echo "== TESTING $PROJECT"
-  if ![[ "$PROJECT" == *"testing_codelab"* ]]; then
+  if ! [[ "$PROJECT" == *"testing_codelab"* ]]; then
     $FLUTTER create --no-overwrite "$PROJECT"
   fi
   (

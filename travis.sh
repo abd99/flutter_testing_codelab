@@ -21,6 +21,7 @@ echo "== FLUTTER_VERS: $FLUTTER_VERS"
 pushd $PWD
 echo "== TESTING testing_codelab"
 cd ./testing_codelab
+$FLUTTER pub get
 $FLUTTER analyze;
 $FLUTTER format --dry-run --set-exit-if-changed .;
 $FLUTTER test

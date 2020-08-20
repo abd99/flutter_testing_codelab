@@ -17,7 +17,16 @@ echo "== FLUTTER_VERS: $FLUTTER_VERS"
 #$FLUTTER format --dry-run --set-exit-if-changed .;
 #popd
 
-declare -a PROJECT_PATHS=($(find . -not -path './flutter/*' -not -path './PluginCodelab/pubspec.yaml' -name pubspec.yaml -exec dirname {} \;))
+# TestingCodelab is a special case since it's a plugin.  Analysis doesn't seem to be working.
+pushd $PWD
+echo "== TESTING testing_codelab"
+cd ./testing_codelab
+$FLUTTER analyze;
+$FLUTTER format --dry-run --set-exit-if-changed .;
+$FLUTTER test
+popd
+
+declare -a PROJECT_PATHS=($(find . -not -path './flutter/*' -not -path './PluginCodelab/pubspec.yaml' -not -path './testing_codelab/' -name pubspec.yaml -exec dirname {} \;))
 
 for PROJECT in "${PROJECT_PATHS[@]}"; do
   echo "== TESTING $PROJECT"

@@ -41,4 +41,3 @@ for PROJECT in "${PROJECT_PATHS[@]}"; do
 done
 
 echo "== END OF TESTS"
-
